@@ -1,0 +1,206 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.btn-rounded {
+    border-radius: 30px;
+}
+
+input:-ms-input-placeholder {
+    font-size: 16px !important;
+}
+
+.input-class {
+    padding: 5px;
+    text-transform: uppercase;
+    width: 150px;
+    border: 1px solid #6db5f1;
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+    margin: 10px auto;
+    display: block;
+}
+
+.input-class:focus {
+    box-shadow: 0 0 5px #6db5f1;
+    width: 250px;
+}
+
+.input-class::-webkit-input-placeholder {
+    /* Chrome, Safari, Opera */
+    color: #000000;
+    font-style: italic;
+    font-size: 10px;
+}
+
+.input-class:-moz-placeholder {
+    /* Firefox 18- */
+    color: #000000;
+    font-style: italic;
+    opacity: 1;
+    font-size: 10px;
+}
+
+.input-class::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #000000;
+    font-style: italic;
+    opacity: 1;
+    font-size: 10px;
+}
+
+.input-class:-ms-input-placeholder {
+    /* IE10+ */
+    color: #000000;
+    font-style: italic;
+    font-size: 10px;
+}
+
+.img-carousel {
+    width: 100px;
+    height: 400px;
+}
+
+label {
+    margin-right: 0 !important;
+}
+
+#id_username,
+#id_password,
+#id_password1,
+#id_password2,
+#id_email {
+    width: 50%;
+    margin: 0 0 10px 0;
+    /* margin: 8px 0;
+    box-sizing: border-box; */
+}

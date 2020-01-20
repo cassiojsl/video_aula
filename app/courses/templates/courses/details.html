@@ -1,0 +1,60 @@
+{% extends "base.html"%} {% load static%} {% block content %}
+<div>
+    <a href="{% url 'home'%}" class="btn btn-light-green btn-rounded" alt="Voltar ao Inicio"><i
+            class="fas fa-hand-point-left fa-2x"></i></a>
+</div>
+<!-- Detalhes do curso -->
+
+<div class="container">
+    <div class="row mt-2">
+        <div class="col mt-2">
+            {% if course.image %}
+            <img src="{{course.image.url}}" alt="{{ course.name }}" width="450px" height="300px"> {%else%}
+            <img src="{% static 'img/course-image.jpg'%}" alt="{{ course.name }}"> {%endif%}
+        </div>
+        <div class="col">
+            <h1 class="h1">{{course}}</h1>
+            <hr>
+            <h3 class="h3">{{course.description}}</h3>
+            <hr>
+            <p>{{course.about|linebreaks}}</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Duvidas sobre o Curso -->
+<hr>
+
+
+<hr>
+<div id="#contato" class="">
+    <div class="container">
+        <h3 class="h3">Tire suas dúvidas sobre o curso</h3>
+        <form class="text-center border border-light p-5" action="#contato" method="POST">
+            {% csrf_token %}
+            <fieldset class="">
+                {% if is_valid %}
+                <p>Formulário enviado com Sucesso</p>
+                {% endif %} {% for field in form%}
+                <div class="d-flex justify-content-center">
+                    <label>{{field.label_tag}}</label>
+                    <p>{{field}}</p>
+
+                    {% if field.errors%}
+                    <ul class=" errorlist ">
+                        {% for error in field.errors%}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {%endif%}
+                </div>
+                {%endfor%}
+            </fieldset>
+            <button class=" btn btn-info my-4 " type=" submit ">Enviar</button>
+        </form>
+    </div>
+</div>
+{% endblock%}
