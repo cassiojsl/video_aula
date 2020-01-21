@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse_lazy
+from django.conf import settings
 
 
 class CourseManager(models.Manager):
@@ -32,3 +33,37 @@ class Course(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy('details', kwargs={'slug': self.slug})
+
+
+class Enrollment(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name='Usuário',
+        related_name='enrollments',
+        on_delete=models.CASCADE
+    )
+    course = models.ForeignKey(
+        Course, verbose_name='Curso',
+        related_name='enrollments',
+        on_delete=models.CASCADE
+    )
+    STATUS_CHOICES = (
+        (0, "Pendente"),
+        (1, "Aprovado"),
+        (2, "Cancelado"),
+    )
+    status = models.IntegerField(
+        'Situação', choices=STATUS_CHOICES,
+        default=1, blank=True
+    )
+    created_at = models.DateTimeField("Criado em", auto_now_add=True)
+    update_at = models.DateTimeField("Atualizado em ", auto_now=True)
+
+    class Meta:
+        verbose_name = 'Inscrição'
+        verbose_name_plural = 'Inscrições'
+        unique_together = (('user', 'course'),)
+
+    def active(self):
+        self.status = 1
+        self.save()

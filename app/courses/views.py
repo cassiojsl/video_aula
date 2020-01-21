@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from .models import Course
+from django.shortcuts import render, redirect
+from .models import Course, Enrollment
 from django.shortcuts import render, get_object_or_404
 from .forms import ContactCourse
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 def index(request):
@@ -27,3 +28,17 @@ def details(request, slug):  # detalhar o curso buscado na primeira página / de
     context["form"] = form
     template_name = 'courses/details.html'
     return render(request, template_name, context)
+
+
+@login_required
+def enrollment(request, slug):
+    course = get_object_or_404(Course, slug=slug)
+    enrollment, created = Enrollment.objects.get_or_create(
+        user=request.user, course=course
+    )
+    if created:
+        enrollment.active()
+        messages.success(request, "Inscrição Realizada com Sucesso")
+    else:
+        messages.info(request, 'Você já está inscrito neste Curso')
+    return redirect('dashboard')

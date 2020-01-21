@@ -6,6 +6,8 @@ from .forms import RegisterForm, EditAccountForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required
 from .models import PasswordReset
 from app.core.utils import generate_hash_key
+from django.contrib import messages
+from app.courses.models import Enrollment
 
 User = get_user_model()
 
@@ -25,8 +27,8 @@ def edit(request):
         form = EditAccountForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            form = EditAccountForm(instance=request.user)
-            context['succes'] = True
+            return redirect('dashboard')
+
     else:
         form = EditAccountForm(instance=request.user)
     context['form'] = form

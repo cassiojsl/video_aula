@@ -6,9 +6,7 @@
 {%endblock%} {% block dashboard_content%}
 <div class="container-fluid">
     <form class="text-center border border-light p-5" action="{% url 'edit' %}" method="POST">
-        {% csrf_token %} {% if succes%}
-        <p>Os dados foram alterados com Sucesso</p>
-        {% endif%}
+        {% csrf_token %}
         <p class="h4 mb-4">Registrar-se</p>
         <fieldset>
             {{form.non_field_errors}} {% for field in form%}
